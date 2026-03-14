@@ -1,0 +1,23 @@
+a:link{
+    color: darkred;
+}
+a:hover{
+    color: darkred;
+}
+a:visited{
+    color: darkmagenta;
+}
+body{
+    background-color: #002000;
+    color: lime;
+}
+img.icon{
+    width: 12pt;
+}
+table,td,th{
+    border: solid;
+    border-collapse: collapse;
+}
+table.nav,th{
+    background-color: green;
+}
