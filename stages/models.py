@@ -8,7 +8,7 @@ from django.db.models import (
     RESTRICT,
     CharField,
     CheckConstraint,
-    DateTimeField,
+    DateField,
     F,
     ForeignKey,
     Model,
@@ -38,8 +38,8 @@ class Submission(Model):
     name: CharField = CharField(max_length=255)
     stage_data: StageField = StageField()
     creator: ForeignKey = ForeignKey(User, on_delete=RESTRICT)
-    released: DateTimeField = DateTimeField(auto_now_add=True)
-    updated: DateTimeField = DateTimeField(auto_now=True)
+    released: DateField = DateField(auto_now_add=True)
+    updated: DateField = DateField(auto_now=True)
     embed: URLField = URLField(blank=True, null=True)
     description: TextField = TextField(blank=True)
     music: PositiveSmallIntegerField = PositiveSmallIntegerField(
