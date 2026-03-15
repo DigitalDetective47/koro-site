@@ -22,7 +22,7 @@
         {% if submission.description %}
             <p>{{ submission.description|linebreaksbr }}</p>
         {% endif %}
-        <h3><a href="{% url 'download' submission.id %}">Download</a></h3>
+        <h3><a href="{% url 'stages:download' submission.id %}">Download</a></h3>
     </body>
 </html>
 {% endautoescape %}
