@@ -8,14 +8,19 @@ from django.utils.text import slugify
 from koro import BinSlot, XmlSlot
 
 from .forms import SubmissionForm
-from .models import Submission
+from .models import Submission, music_choices, music_ytids
 
 
 def item(request: HttpRequest, pk: int) -> HttpResponse:
+    target: Final[Submission] = get_object_or_404(Submission, id=pk)
     return render(
         request,
         "stages/index.html",
-        {"submission": get_object_or_404(Submission, id=pk)},
+        {
+            "submission": target,
+            "track_id": music_ytids[target.music - 1],
+            "track_name": music_choices[target.music],
+        },
     )
 
 

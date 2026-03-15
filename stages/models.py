@@ -29,9 +29,8 @@ with open("stages/music.csv", newline="") as f:
     music_choices: Final[Mapping[int, str]] = {
         i: row["Title"] for i, row in enumerate(readers[0], 1)
     }
-    music_urls: Final[Sequence[str]] = tuple(
-        f"https://www.youtube.com/watch?v={row['YouTube Video ID']}&list=PLalaKypXw_gWXIVxJyfCJWygXc55BSzId"
-        for row in readers[1]
+    music_ytids: Final[Sequence[str]] = tuple(
+        row["YouTube Video ID"] for row in readers[1]
     )
 
 
