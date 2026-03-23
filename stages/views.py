@@ -49,7 +49,7 @@ def new(request: HttpRequest) -> HttpResponse:
                     if isinstance(untyped_content, str)
                     else bytes(untyped_content)
                 )
-                Submission(
+                new: Final[Submission] = Submission(
                     name=form.cleaned_data["name"],
                     stage_data=(XmlSlot if content[0] else BinSlot).deserialize(
                         content
@@ -58,8 +58,9 @@ def new(request: HttpRequest) -> HttpResponse:
                     embed=form.cleaned_data["embed"],
                     description=form.cleaned_data["description"],
                     music=form.cleaned_data["music"],
-                ).save()
-                return HttpResponseRedirect("/stage/1")
+                )
+                new.save()
+                return HttpResponseRedirect(f"/stage/{new.id}")  # type: ignore[attr-defined]
     else:
         form = SubmissionForm()
     return render(request, "stages/new.html", {"form": form})
