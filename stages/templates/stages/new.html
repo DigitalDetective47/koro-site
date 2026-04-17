@@ -1,19 +1,10 @@
-{% load static %}
-{% autoescape on %}
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link href="{% static 'style.css' %}" rel="stylesheet" />
-        <title>Submit New Stage</title>
-    </head>
-    <body>
-        <h1 style="text-align:center;">Submit New Stage</h1>
-        <form action="{% url "stages:new" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form }}
-            <br /><input type="submit" value="Submit" />
-        </form>
-    </body>
-</html>
-{% endautoescape %}
+{% extends "root.html" %}
+{% block title %}Submit New Stage{% endblock %}
+{% block content %}
+<h1 style="text-align:center;">Submit New Stage</h1>
+<form action="{% url "stages:new" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <br /><input type="submit" value="Submit" />
+</form>
+{% endblock %}
